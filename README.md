@@ -2,6 +2,10 @@
 
 Author : Zumardi Rahman 
 
+## Demo Firebase App
+See here : https://fir-app-zum4r.web.app/
+
+
 ## Step Build
 
 #### install firebase secara global
