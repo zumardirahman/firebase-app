@@ -40,5 +40,6 @@ or
 - Create database realtime
 
 #### Insert Data to RTDB firebase
+#### Get Data from RTDB firebase
 
 
