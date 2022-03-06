@@ -39,6 +39,6 @@ or
 - Add firebase to your web
 - Create database realtime
 
-#### Read Database
+#### Insert Data to RTDB firebase
 
 
