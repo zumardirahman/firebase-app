@@ -1,89 +1,140 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Welcome to Firebase Hosting</title>
+<!doctype html>
+<html lang="en">
 
-    <!-- update the version number as needed -->
-    <script defer src="/__/firebase/9.6.8/firebase-app-compat.js"></script>
-    <!-- include only the Firebase features as you need -->
-    <script defer src="/__/firebase/9.6.8/firebase-auth-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-database-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-firestore-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-functions-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-messaging-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-storage-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-analytics-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-remote-config-compat.js"></script>
-    <script defer src="/__/firebase/9.6.8/firebase-performance-compat.js"></script>
-    <!-- 
-      initialize the SDK after all desired features are loaded, set useEmulator to false
-      to avoid connecting the SDK to running emulators.
-    -->
-    <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <style media="screen">
-      body { background: #ECEFF1; color: rgba(0,0,0,0.87); font-family: Roboto, Helvetica, Arial, sans-serif; margin: 0; padding: 0; }
-      #message { background: white; max-width: 360px; margin: 100px auto 16px; padding: 32px 24px; border-radius: 3px; }
-      #message h2 { color: #ffa100; font-weight: bold; font-size: 16px; margin: 0 0 8px; }
-      #message h1 { font-size: 22px; font-weight: 300; color: rgba(0,0,0,0.6); margin: 0 0 16px;}
-      #message p { line-height: 140%; margin: 16px 0 24px; font-size: 14px; }
-      #message a { display: block; text-align: center; background: #039be5; text-transform: uppercase; text-decoration: none; color: white; padding: 16px; border-radius: 4px; }
-      #message, #message a { box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24); }
-      #load { color: rgba(0,0,0,0.4); text-align: center; font-size: 13px; }
-      @media (max-width: 600px) {
-        body, #message { margin-top: 0; background: white; box-shadow: none; }
-        body { border-top: 16px solid #ffa100; }
-      }
-    </style>
-  </head>
-  <body>
-    <div id="message">
-      <h2>Welcome</h2>
-      <h1>Firebase Hosting Setup Complete</h1>
-      <p>You're seeing this because you've successfully setup Firebase Hosting. Now it's time to go build something extraordinary!</p>
-      <a target="_blank" href="https://firebase.google.com/docs/hosting/">Open Hosting Documentation</a>
-    </div>
-    <p id="load">Firebase SDK Loading&hellip;</p>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const loadEl = document.querySelector('#load');
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-        // // The Firebase SDK is initialized and available here!
-        //
-        // firebase.auth().onAuthStateChanged(user => { });
-        // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-        // firebase.firestore().doc('/foo/bar').get().then(() => { });
-        // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-        // firebase.messaging().requestPermission().then(() => { });
-        // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-        // firebase.analytics(); // call to activate
-        // firebase.analytics().logEvent('tutorial_completed');
-        // firebase.performance(); // call to activate
-        //
-        // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+  <title>Firebase App</title>
+</head>
 
-        try {
-          let app = firebase.app();
-          let features = [
-            'auth', 
-            'database', 
-            'firestore',
-            'functions',
-            'messaging', 
-            'storage', 
-            'analytics', 
-            'remoteConfig',
-            'performance',
-          ].filter(feature => typeof app[feature] === 'function');
-          loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-        } catch (e) {
-          console.error(e);
-          loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-        }
+<body>
+  <div class="container">
+
+    <form>
+      <div class="form-group">
+        <label>Nama</label>
+        <input type="text" class="form-control" id="Namebox">
+        <small class="form-text text-muted">Masukan Nama</small>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="Rollbox">
+        <small class="form-text text-muted">Masukan Roll</small>
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" id="Secbox">
+        <small class="form-text text-muted">Masukan Section</small>
+      </div>
+      <div class="form-group">
+        <select class="form-control" id="Genbox">
+          <option value="Male">Laki Laki</option>
+          <option value="Female">Perempuan</option>
+        </select>
+      </div>
+      
+      <button class="btn btn-primary" id="Insbtn">Insert</button>
+      <button class="btn btn-primary" id="Selbtn">Select</button>
+      <button class="btn btn-primary" id="Updbtn">Update</button>
+      <button class="btn btn-primary" id="Delbtn">Delete</button>
+    </form>
+    <hr>
+    <h1>Data Barang</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nama</th>
+          <th scope="col">Jumlah</th>
+          <th scope="col">Aksi</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>edit delete</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+<!-- import + configuration -->
+ <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyCJ2DKv-T0XguzJJXQCrvmfYCg4p3REZdY",
+    authDomain: "fir-app-zum4r.firebaseapp.com",
+    databaseURL : "https://fir-app-zum4r-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "fir-app-zum4r",
+    storageBucket: "fir-app-zum4r.appspot.com",
+    messagingSenderId: "566814725124",
+    appId: "1:566814725124:web:5aa60cdd098e8bc1b8d151"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  
+    import {getDatabase, ref, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+
+    const db = getDatabase();
+
+    // refereces database
+    var namebox = document.getElementById("Namebox");
+    var rollbox = document.getElementById("Rollbox");
+    var secbox = document.getElementById("Secbox");
+    var genbox = document.getElementById("Genbox");
+
+    var insBtn = document.getElementById("Insbtn");
+    var selBtn = document.getElementById("Selbtn");
+    var updBtn = document.getElementById("Updbtn");
+    var delBtn = document.getElementById("Delbtn");
+
+
+    // insert data func
+    function InsertData() {
+      set(ref(db, "TheStudents/" + rollbox.value),{
+        NameOfStd: namebox.value,
+        RollNo  : rollbox.value,
+        Section : secbox.value,
+        Gender  : genbox.value,
+      })
+      .then(() => {
+        alert("data stored successfully");
+      }).catch((error) => {
+        alert("unsuccessfully, error " + error);
       });
-    </script>
-  </body>
+    }
+
+    // assign event to btn
+    insBtn.addEventListener('click', InsertData);
+
+
+
+
+  </script>
+</body>
+
 </html>
