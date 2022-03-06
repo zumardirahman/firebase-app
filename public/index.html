@@ -94,7 +94,7 @@
     // Initialize Firebase
     const app = initializeApp(firebaseConfig);
 
-    import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+    import { getDatabase, ref, set, get, child, update, remove, onValue} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
 
     const db = getDatabase();
 
@@ -233,7 +233,25 @@
         });
     }
 
-    window.onload = GetAllDataOnce
+    //getting data real time   
+    function GetAllDataRealTime() {
+      const dbref = ref(db, "TheStudents")
+
+      onValue(dbref, (snapshot) => {
+        var students = []
+
+        snapshot.forEach(childSnapshot => {
+          students.push(childSnapshot.val())
+        })
+
+        AddAllItemsToTable(students)
+
+
+      });
+    }
+
+    // window.onload = GetAllDataOnce
+    window.onload = GetAllDataRealTime
   </script>
 </body>
 
