@@ -123,7 +123,31 @@
         .then(() => {
           alert("data stored successfully");
         }).catch((error) => {
-          alert("unsuccessfully, error " + error);
+          alert("unsuccessfully created, error " + error);
+        });
+    }
+
+    // update data func
+    function UpdateData() {
+      update(ref(db, "TheStudents/" + rollbox.value), {
+        NameOfStd: namebox.value,
+        Section: secbox.value,
+        Gender: genbox.value,
+      })
+        .then(() => {
+          alert("data updated successfully");
+        }).catch((error) => {
+          alert("unsuccessfully update, error " + error);
+        });
+    }
+
+    // delete data func
+    function DeleteData() {
+      remove(ref(db, "TheStudents/" + rollbox.value))
+        .then(() => {
+          alert("data deleted successfully");
+        }).catch((error) => {
+          alert("unsuccessfully delete, error " + error);
         });
     }
 
@@ -137,11 +161,12 @@
             namebox.value = snapshot.val().NameOfStd,
             secbox.value = snapshot.val().Section,
             genbox.value = snapshot.val().Gender
+          alert("get data founded")
         } else {
           alert("no data found")
         }
       }).catch((error) => {
-        alert("unsuccessfully, error " + error);
+        alert("unsuccessfully get data, error " + error);
       });
 
     }
@@ -149,6 +174,8 @@
     // assign event to btn
     insBtn.addEventListener('click', InsertData);
     selBtn.addEventListener('click', SelectData);
+    updBtn.addEventListener('click', UpdateData);
+    delBtn.addEventListener('click', DeleteData);
 
   </script>
 </body>
