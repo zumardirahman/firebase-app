@@ -16,31 +16,31 @@
 <body>
   <div class="container">
 
-      <div class="form-group">
-        <label>Nama</label>
-        <input type="text" class="form-control" id="Namebox">
-        <small class="form-text text-muted">Masukan Nama</small>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="Rollbox">
-        <small class="form-text text-muted">Masukan Roll</small>
-      </div>
-      <div class="form-group">
-        <input type="text" class="form-control" id="Secbox">
-        <small class="form-text text-muted">Masukan Section</small>
-      </div>
-      <div class="form-group">
-        <select class="form-control" id="Genbox">
-          <option value="Male">Laki Laki</option>
-          <option value="Female">Perempuan</option>
-        </select>
-      </div>
-      
-      <button class="btn btn-primary" id="Insbtn">Insert</button>
-      <button class="btn btn-primary" id="Selbtn">Select</button>
-      <button class="btn btn-primary" id="Updbtn">Update</button>
-      <button class="btn btn-primary" id="Delbtn">Delete</button>
-    
+    <div class="form-group">
+      <input type="text" class="form-control" id="Rollbox">
+      <small class="form-text text-muted">Masukan Roll</small>
+    </div>
+    <div class="form-group">
+      <label>Nama</label>
+      <input type="text" class="form-control" id="Namebox">
+      <small class="form-text text-muted">Masukan Nama</small>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="Secbox">
+      <small class="form-text text-muted">Masukan Section</small>
+    </div>
+    <div class="form-group">
+      <select class="form-control" id="Genbox">
+        <option value="Male">Laki Laki</option>
+        <option value="Female">Perempuan</option>
+      </select>
+    </div>
+
+    <button class="btn btn-primary" id="Insbtn">Insert</button>
+    <button class="btn btn-primary" id="Selbtn">Select</button>
+    <button class="btn btn-primary" id="Updbtn">Update</button>
+    <button class="btn btn-primary" id="Delbtn">Delete</button>
+
     <hr>
     <h1>Data Barang</h1>
     <table class="table table-striped">
@@ -75,34 +75,34 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
-<!-- import + configuration -->
- <script type="module">
-  // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
-  // TODO: Add SDKs for Firebase products that you want to use
-  // https://firebase.google.com/docs/web/setup#available-libraries
+  <!-- import + configuration -->
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyCJ2DKv-T0XguzJJXQCrvmfYCg4p3REZdY",
-    authDomain: "fir-app-zum4r.firebaseapp.com",
-    databaseURL : "https://fir-app-zum4r-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "fir-app-zum4r",
-    storageBucket: "fir-app-zum4r.appspot.com",
-    messagingSenderId: "566814725124",
-    appId: "1:566814725124:web:5aa60cdd098e8bc1b8d151"
-  };
+    // Your web app's Firebase configuration
+    const firebaseConfig = {
+      apiKey: "AIzaSyCJ2DKv-T0XguzJJXQCrvmfYCg4p3REZdY",
+      authDomain: "fir-app-zum4r.firebaseapp.com",
+      databaseURL: "https://fir-app-zum4r-default-rtdb.asia-southeast1.firebasedatabase.app",
+      projectId: "fir-app-zum4r",
+      storageBucket: "fir-app-zum4r.appspot.com",
+      messagingSenderId: "566814725124",
+      appId: "1:566814725124:web:5aa60cdd098e8bc1b8d151"
+    };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  
-    import {getDatabase, ref, set, child, update, remove} from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+
+    import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-database.js";
 
     const db = getDatabase();
 
     // refereces database
-    var namebox = document.getElementById("Namebox");
     var rollbox = document.getElementById("Rollbox");
+    var namebox = document.getElementById("Namebox");
     var secbox = document.getElementById("Secbox");
     var genbox = document.getElementById("Genbox");
 
@@ -114,24 +114,68 @@
 
     // insert data func
     function InsertData() {
-      set(ref(db, "TheStudents/" + rollbox.value),{
+      set(ref(db, "TheStudents/" + rollbox.value), {
+        RollNo: rollbox.value,
         NameOfStd: namebox.value,
-        RollNo  : rollbox.value,
-        Section : secbox.value,
-        Gender  : genbox.value,
+        Section: secbox.value,
+        Gender: genbox.value,
       })
-      .then(() => {
-        alert("data stored successfully");
+        .then(() => {
+          alert("data stored successfully");
+        }).catch((error) => {
+          alert("unsuccessfully created, error " + error);
+        });
+    }
+
+    // update data func
+    function UpdateData() {
+      update(ref(db, "TheStudents/" + rollbox.value), {
+        NameOfStd: namebox.value,
+        Section: secbox.value,
+        Gender: genbox.value,
+      })
+        .then(() => {
+          alert("data updated successfully");
+        }).catch((error) => {
+          alert("unsuccessfully update, error " + error);
+        });
+    }
+
+    // delete data func
+    function DeleteData() {
+      remove(ref(db, "TheStudents/" + rollbox.value))
+        .then(() => {
+          alert("data deleted successfully");
+        }).catch((error) => {
+          alert("unsuccessfully delete, error " + error);
+        });
+    }
+
+    // select data function
+    function SelectData() {
+      const dbref = ref(db)
+
+      get(child(dbref, "TheStudents/" + rollbox.value))
+      .then((snapshot) => {
+        if (snapshot.exists()) {
+            namebox.value = snapshot.val().NameOfStd,
+            secbox.value = snapshot.val().Section,
+            genbox.value = snapshot.val().Gender
+          alert("get data founded")
+        } else {
+          alert("no data found")
+        }
       }).catch((error) => {
-        alert("unsuccessfully, error " + error);
+        alert("unsuccessfully get data, error " + error);
       });
+
     }
 
     // assign event to btn
     insBtn.addEventListener('click', InsertData);
-
-
-
+    selBtn.addEventListener('click', SelectData);
+    updBtn.addEventListener('click', UpdateData);
+    delBtn.addEventListener('click', DeleteData);
 
   </script>
 </body>
